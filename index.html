@@ -23,7 +23,15 @@
       // The current speed of the ball
       var dx = 2;
       var dy = 5;
-
+       
+      var paddle_width = 10;
+      var paddle_height = 50;
+      var leftpaddle_y = CANVAS_HEIGHT /2 - paddle_height /2;
+      var rightpaddle_y = leftpaddle_y;
+      var leftpaddle_x = 5;
+      var rightpaddle_x = CANVAS_WIDTH - paddle_width - leftpaddle_x;
+      
+      function handlekeydown(event)
       /**
        * This function takes a 2d canvas context and draws a ball on it at ballX and ballY
        * of radius BALL_RADIUS and color BALL_COLOR.
@@ -42,15 +50,13 @@
         if (ballY > CANVAS_HEIGHT || ballY < 0) {
           dy = -dy;
         }
-
+         
         // Actually draw the ball
         context.beginPath();
         context.fillStyle = BALL_COLOR;
         context.arc(ballX, ballY, BALL_RADIUS, 0, 2 * Math.PI, true);
         context.closePath();
         context.fill();
-      }
-
       /**
        * This function is meant to be the refreshing drawing function. It gets the
        * appropriate 2d canvas context, clears it, and delegates to the various
